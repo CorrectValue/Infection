@@ -11,6 +11,9 @@ public class AgentStateController : MonoBehaviour
 
     //other script references
     private AgentMovementController script;
+    private AgentColorUpdate scr;
+
+    private int id; //unique identifier for every agent
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +23,7 @@ public class AgentStateController : MonoBehaviour
 
         //get scripts references
         script = GetComponent<AgentMovementController>();
+        scr = GetComponent<AgentColorUpdate>();
     }
 
     // Update is called once per frame
@@ -28,13 +32,33 @@ public class AgentStateController : MonoBehaviour
         
     }
 
-    public bool getInfected()
+    public bool GetInfected()
     {
         return infected;
     }
 
-    public void setInfected(bool value)
+    public void SetInfected(bool value)
     {
         infected = value;
+        //set new color
+        scr.changeColor(1);
+    }
+
+    void die()
+    {
+        dead = true;
+        //set new color
+        scr.changeColor(-1);
+    }
+
+    public void SetId(int givenId)
+    {
+        //sets agent's id
+        id = givenId;
+    }
+
+    public int GetId()
+    {
+        return id;
     }
 }

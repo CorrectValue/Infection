@@ -16,7 +16,12 @@ public class AgentMovementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //animate basic activity such as randomly walking around the arena
+        if(!dead)
+        {
+            //only if an agent is alive
+
+        }
     }
 
     void setDead()
